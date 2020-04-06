@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:todomobx/stores/login_store.dart';
@@ -43,12 +46,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        CustomTextField(
-                          hint: 'E-mail',
-                          prefix: Icon(Icons.account_circle),
-                          textInputType: TextInputType.emailAddress,
-                          onChanged: loginStore.setEmail,
-                          enabled: true,
+                        Observer(
+                          builder: (_){
+                            return CustomTextField(
+                              hint: 'E-mail',
+                              prefix: Icon(Icons.account_circle),
+                              textInputType: TextInputType.emailAddress,
+                              onChanged: loginStore.setEmail,
+                              enabled: !loginStore.loading,
+                            );
+                          },
                         ),
                         const SizedBox(height: 16,),
                         Observer(
@@ -58,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               prefix: Icon(Icons.lock,),
                               obscure: loginStore.obscure,
                               onChanged: loginStore.setPassword,
-                              enabled: true,
+                              enabled: !loginStore.loading,
                               suffix: CustomIconButton(
                                 radius: 32,
                                 iconData: loginStore.obscure ? Icons.visibility_off : Icons.visibility,
