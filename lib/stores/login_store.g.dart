@@ -21,11 +21,12 @@ mixin _$LoginStore on _LoginStore, Store {
   bool get isPasswordValid => (_$isPasswordValidComputed ??=
           Computed<bool>(() => super.isPasswordValid))
       .value;
-  Computed<bool> _$isFormValidComputed;
+  Computed<Function> _$loginPressedComputed;
 
   @override
-  bool get isFormValid =>
-      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid)).value;
+  Function get loginPressed =>
+      (_$loginPressedComputed ??= Computed<Function>(() => super.loginPressed))
+          .value;
 
   final _$emailAtom = Atom(name: '_LoginStore.email');
 
@@ -95,6 +96,23 @@ mixin _$LoginStore on _LoginStore, Store {
     }, _$loadingAtom, name: '${_$loadingAtom.name}_set');
   }
 
+  final _$loggeInAtom = Atom(name: '_LoginStore.loggeIn');
+
+  @override
+  bool get loggeIn {
+    _$loggeInAtom.context.enforceReadPolicy(_$loggeInAtom);
+    _$loggeInAtom.reportObserved();
+    return super.loggeIn;
+  }
+
+  @override
+  set loggeIn(bool value) {
+    _$loggeInAtom.context.conditionallyRunInAction(() {
+      super.loggeIn = value;
+      _$loggeInAtom.reportChanged();
+    }, _$loggeInAtom, name: '${_$loggeInAtom.name}_set');
+  }
+
   final _$loginAsyncAction = AsyncAction('login');
 
   @override
@@ -137,7 +155,7 @@ mixin _$LoginStore on _LoginStore, Store {
   @override
   String toString() {
     final string =
-        'email: ${email.toString()},password: ${password.toString()},obscure: ${obscure.toString()},loading: ${loading.toString()},isEmailValid: ${isEmailValid.toString()},isPasswordValid: ${isPasswordValid.toString()},isFormValid: ${isFormValid.toString()}';
+        'email: ${email.toString()},password: ${password.toString()},obscure: ${obscure.toString()},loading: ${loading.toString()},loggeIn: ${loggeIn.toString()},isEmailValid: ${isEmailValid.toString()},isPasswordValid: ${isPasswordValid.toString()},loginPressed: ${loginPressed.toString()}';
     return '{$string}';
   }
 }
