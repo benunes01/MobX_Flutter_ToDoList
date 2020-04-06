@@ -37,4 +37,14 @@ abstract class _LoginStore with Store {
 
   @computed
   bool get isFormValid => isEmailValid && isPasswordValid;
+
+
+  // ----------------------
+
+
+  @observable
+  bool obscure = true;
+
+  @action
+  void setObscure() => obscure = !obscure;
 }
