@@ -78,6 +78,30 @@ mixin _$LoginStore on _LoginStore, Store {
     }, _$obscureAtom, name: '${_$obscureAtom.name}_set');
   }
 
+  final _$loadingAtom = Atom(name: '_LoginStore.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.context.enforceReadPolicy(_$loadingAtom);
+    _$loadingAtom.reportObserved();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.context.conditionallyRunInAction(() {
+      super.loading = value;
+      _$loadingAtom.reportChanged();
+    }, _$loadingAtom, name: '${_$loadingAtom.name}_set');
+  }
+
+  final _$loginAsyncAction = AsyncAction('login');
+
+  @override
+  Future<void> login() {
+    return _$loginAsyncAction.run(() => super.login());
+  }
+
   final _$_LoginStoreActionController = ActionController(name: '_LoginStore');
 
   @override
@@ -113,7 +137,7 @@ mixin _$LoginStore on _LoginStore, Store {
   @override
   String toString() {
     final string =
-        'email: ${email.toString()},password: ${password.toString()},obscure: ${obscure.toString()},isEmailValid: ${isEmailValid.toString()},isPasswordValid: ${isPasswordValid.toString()},isFormValid: ${isFormValid.toString()}';
+        'email: ${email.toString()},password: ${password.toString()},obscure: ${obscure.toString()},loading: ${loading.toString()},isEmailValid: ${isEmailValid.toString()},isPasswordValid: ${isPasswordValid.toString()},isFormValid: ${isFormValid.toString()}';
     return '{$string}';
   }
 }

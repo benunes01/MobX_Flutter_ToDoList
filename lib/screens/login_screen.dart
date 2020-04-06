@@ -78,11 +78,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(32),
                                 ),
-                                child: Text('Login'),
+                                child: loginStore.loading ? CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation(Colors.white),
+                                ) : Text('Login'),
                                 color: Theme.of(context).primaryColor,
                                 disabledColor: Theme.of(context).primaryColor.withAlpha(100),
                                 textColor: Colors.white,
-                                onPressed: loginStore.isFormValid ? (){
+                                onPressed: loginStore.isFormValid ? () {
+                                  loginStore.login();
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(builder: (context)=>ListScreen())
                                   );
