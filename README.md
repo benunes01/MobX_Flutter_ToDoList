@@ -22,8 +22,10 @@
   build_runner : Gera o arquivo mobX.
 </h4>
 <br>
-<h3>Para gerar os arquivos mobX com o build_runner:</h3>
-<p>flutter packages pub run build_runner watch</p>
+<h3>Para gerar os arquivos mobX com o build_runner: (TERMINAL)</h3>
+
+flutter packages pub run build_runner watch
+
 
 
 <br>
