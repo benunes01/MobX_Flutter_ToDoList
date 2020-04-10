@@ -22,8 +22,10 @@
   build_runner : Gera o arquivo mobX.
 </h4>
 <br>
-<h3>Para gerar os arquivos mobX com o build_runner:</h3>
-<p>flutter packages pub run build_runner watch</p>
+<h3>Para gerar os arquivos mobX com o build_runner: (TERMINAL)</h3>
+
+flutter packages pub run build_runner watch
+
 
 
 <br>
@@ -46,3 +48,32 @@
 <h4>Botão de 'add' só aparecer se o campo não tiver vazio</h4>
 <h4>Criando ObservableList para que o mobX consiga notar alterações dentro da Lista</h4>
 <h4>Marcar como lido quando clicar na tarefa - deixando a tarefa riscada e cinza</h4>
+<h4>Loggout com provider global apenas para exemplo, sem utilidade nesse App</h4>
+
+<br>
+
+<h3>Criar um gerador de código mobX automático</h3>
+
+Abbreviation: 'NOME DESEJADO PARA CRIAR'
+
+Template Text:
+
+```
+import 'package:mobx/mobx.dart
+
+part '$FILENAME$.g.dart';
+
+class $CLASSNAME$ = _$CLASSNAME$ with _$$$CLASSNAME$;
+
+abstract class _$CLASSNAME$ with Store {
+
+
+
+}
+
+```
+
+vai em Edit variables e poe:
+
+NAME: FILENAME  -- EXPRESSION: fileNameWithoutExtension() -- skip if defined [x]
+NAME: CLASSNAME  -- EXPRESSION: capitalize(camelCase(FILENAME)) -- skip if defined [x]
