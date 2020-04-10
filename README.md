@@ -46,7 +46,7 @@
 <h4>Botão de 'add' só aparecer se o campo não tiver vazio</h4>
 <h4>Criando ObservableList para que o mobX consiga notar alterações dentro da Lista</h4>
 <h4>Marcar como lido quando clicar na tarefa - deixando a tarefa riscada e cinza</h4>
-<hr>Loggout com provider global apenas para exemplo, sem utilidade nesse App</h4>
+<h4>Loggout com provider global apenas para exemplo, sem utilidade nesse App</h4>
 
 <br>
 
