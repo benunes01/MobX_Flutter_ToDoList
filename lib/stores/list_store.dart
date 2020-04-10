@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
+import 'package:todomobx/stores/todo_store.dart';
 
 part 'list_store.g.dart';
 
@@ -17,11 +18,12 @@ abstract class _ListStore with Store{
   bool get isTitleValid => newTodoTitle.isNotEmpty;
 
 
-  ObservableList<String> todoList = ObservableList<String>();
+  ObservableList<TodoStore> todoList = ObservableList<TodoStore>();
 
   @action
   void addTodo(){
-    todoList.add(newTodoTitle);
+    todoList.insert(0, TodoStore(newTodoTitle));
+    newTodoTitle = '';
   }
 
 
