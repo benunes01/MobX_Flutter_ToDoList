@@ -58,6 +58,8 @@ flutter packages pub run build_runner watch
 
 <h3>Criar um gerador de código mobX automático</h3>
 
+Vai em: File -> Settings -> Live Templates -> Flutter -> +
+
 Abbreviation: 'NOME DESEJADO PARA CRIAR'
 
 Template Text:
