@@ -15,6 +15,13 @@ abstract class _TodoStore with Store {
   bool done = false;
 
   @action
-  void toggleDone() => !done;
+  void toggleDone() {
+    if(this.done){
+      this.done = false;
+    }
+    else{
+      this.done = true;
+    }
+  }
 
 }
