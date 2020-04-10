@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:todomobx/stores/list_store.dart';
+import 'package:todomobx/stores/login_store.dart';
 import 'package:todomobx/widgets/custom_icon_button.dart';
 import 'package:todomobx/widgets/custom_text_field.dart';
 
@@ -45,6 +47,8 @@ class _ListScreenState extends State<ListScreen> {
                       icon: Icon(Icons.exit_to_app),
                       color: Colors.white,
                       onPressed: () {
+                        //listen false para não ficar notificando sempre que houver alteração no provider, apenas quando clicar
+                        Provider.of<LoginStore>(context, listen: false).logout();
                         Navigator.of(context).pushReplacement(
                             MaterialPageRoute(builder: (context) =>
                                 LoginScreen())
