@@ -40,7 +40,9 @@
 <br>
 
 <h3>Lista de tarefas:</h3>
+<h4>Adiciona sempre no topo da lista</h4>
 <h4>Não aceitar o titulo da lista como vazio</h4>
+<h4>Quando criar nova tarefa, zerar o campo de add tarefas</h4>
 <h4>Botão de 'add' só aparecer se o campo não tiver vazio</h4>
 <h4>Criando ObservableList para que o mobX consiga notar alterações dentro da Lista</h4>
-<h4>Marcar como lido quando clicar na tarefa</h4>
+<h4>Marcar como lido quando clicar na tarefa - deixando a tarefa riscada e cinza</h4>
