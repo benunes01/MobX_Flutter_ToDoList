@@ -30,6 +30,9 @@
 
 flutter packages pub run build_runner watch
 
+<h3> Caso dê conflito, tente usar isso antes</h3>
+
+flutter packages pub run build_runner build --delete-conflicting-outputs
 
 
 <br>
